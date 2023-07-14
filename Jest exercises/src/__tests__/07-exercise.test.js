@@ -21,6 +21,12 @@ describe("07-exercises", () => {
     // You should make 2 assertions in this test, see bellow
     expect.assertions(2);
 
+    axios.get = jest.fn().mockResolvedValue(users);
+    const result = await getUserData(BASE_URL);
+
+    expect(result).toEqual(users.data);
+    expect(axios.get).toHaveBeenCalledWith(BASE_URL);
+
     // 2. set a mock resolved value to the axios.get method
     //    and pass it the `users` variable
 

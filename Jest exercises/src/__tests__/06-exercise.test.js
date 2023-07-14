@@ -20,7 +20,7 @@ describe("06-exercises", () => {
    * @tip
    * done callback
    */
-  test("asyncAdd returns the sum of the numbers", () => {
+  test("asyncAdd returns the sum of the numbers", (done) => {
     expect.assertions(1);
 
     asyncAdd(5, 5, callback);
@@ -28,6 +28,8 @@ describe("06-exercises", () => {
     // Finish the test
     function callback(result) {
       expect(result).toBe(10);
+
+      done();
     }
   });
 
@@ -46,8 +48,8 @@ describe("06-exercises", () => {
     const expectedUser = { id: userID, name: "Alex" };
 
     expect.assertions(1);
+    return expect(fetchUserOK(userID)).resolves.toEqual(expectedUser); // by using return before expect, you are ensuring that the test function waits for the Promise to resolve before completing the test execution.
 
-    // Finish the test
   });
 
   /**
@@ -68,6 +70,7 @@ describe("06-exercises", () => {
 
     expect.assertions(1);
 
+    return expect(fetchUserFail(userID)).rejects.toEqual(expectedMessage); 
     // Finish the test
   });
 });

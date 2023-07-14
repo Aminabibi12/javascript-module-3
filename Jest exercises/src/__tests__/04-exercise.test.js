@@ -11,6 +11,11 @@ describe("04-exercises", () => {
   test("createUserObject returns a user object with the right properties", () => {
     expect.assertions(3);
 
+    const user = createUserObject('Alex', 'Spence', 'email');
+    expect(user.firstName).toBeTruthy();
+    expect(user.lastName).toBeTruthy();
+    expect(user.email).toBeTruthy();
+
     /**
      * Write 3 assertions that check if executing the createUserObject function
      * with the following arguments:
@@ -37,6 +42,8 @@ describe("04-exercises", () => {
   test("createCorporateEmailAddress appends the corporate email domain", () => {
     expect.assertions(1);
 
+    expect(createCorporateEmailAddress("dani")).toMatch("@company.com");
+
     /**
      * Write an assertion using the `.toMatch()` matcher that the result
      * of executing the createCorporateEmailAddress function with an argument
@@ -50,6 +57,9 @@ describe("04-exercises", () => {
   test("generateRandomNumberFrom1to10 returns a number between 1 and 10", () => {
     expect.assertions(2);
 
+    expect(generateRandomNumberFrom1to10(Number)).toBeGreaterThan(0);
+    expect(generateRandomNumberFrom1to10(Number)).toBeLessThan(11);
+      
     /**
      * Write 2 assertions to check that the generateRandomNumberFrom1to10 function
      * returns a number that is greater than 0 and lower than 11

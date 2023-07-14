@@ -16,6 +16,8 @@ describe("05-exercises", () => {
     const prevList = [1, 2, 3, 4];
     const newItem = 5;
 
+    expect(addItemToList(prevList, newItem)).toContain(newItem);
+
     /**
      * Test that the addItemToList function adds the `newItem` variable to the
      * `prevList` array and returns an array that contains the previous elements
@@ -32,7 +34,8 @@ describe("05-exercises", () => {
 
     const users = [{ name: "dani" }, { name: "ana" }, { name: "andrew" }];
     const expectedUser = { name: "maria" };
-
+    
+    expect(addUser(users, "maria")).toContainEqual(expectedUser);
     /**
      * Test that the addUser function returns an array of objects
      * The function is called with the `users` array as the first argument
@@ -53,6 +56,8 @@ describe("05-exercises", () => {
 
     const expectedDays = ["Monday", "Tuesday"];
 
+    expect(getWeekDays()).toEqual(expect.arrayContaining(expectedDays));
+
     /**
      * Write an assertion that executing the getWeekDays function
      * returns an array of week days.
@@ -70,6 +75,7 @@ describe("05-exercises", () => {
     const user = { name: "dani" };
     const expectedProperty = { role: "ADMIN" };
 
+    expect(makeAdminUser(user)).toEqual(expect.objectContaining(expectedProperty));
     /**
      * Write an assertion that executing the makeAdminUser function
      * returns an object with a property of role.
@@ -95,6 +101,7 @@ describe("05-exercises", () => {
 
     const user = { name: "dani", ...userAddress };
 
+     expect(getUserInfo(user)).not.toEqual(expect.objectContaining(userAddress));
     /**
      * Write an assertion that executing the getUserInfo function returns
      * an object without the properties in the `userAddress` variable
